@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>じゃんけん</title>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet" />
+  <link rel="stylesheet" href="css/janken.css">
+</head>
+
+<body>
+  <main>
+
+    <section>
+      <h1>じゃんけん</h1>
+    </section>
+
+    <section id="cpu">
+      <p id="cpu">コンピュータの手は？？</p>
+<img src="" style="width: 50px;" alt="">
+    </section>
+
+    <section id="result" style="height: 300px;">
+      <p>勝敗は？？</p>
+    </section>
+
+    <section>
+      <button id="gu">グー</button>
+      <button id="cho">チョキ</button>
+      <button id="pa">パー</button>
+    </section>
+
+  </main>
+  <!-- jQueryの読み込み -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    //button グー＝０、チョキ＝１、パー＝２と定義する
+    //gu button をクリックすると乱数を生成する
+    const gu = '<img src="./images/gu.jpeg" alt="">';
+    const cho = '<img src="./images/cho.jpg" style="width: 100px;" alt="">';
+    const pa = '<img src="./images/pa.jpg" style="width: 100px;" alt="">';
+
+    const win = '<img src="./images/win.jpg" alt="">';
+    const kame = '<img src="./images/kame.png" style="width: 100px;" alt="">';
+    const icon = '<img src="./images/icon.jpg" style="width: 100px;" alt="">';
+
+
+    $('#gu').on('mouseover', function () {
+      const random = Math.floor(Math.random() * 3);
+      console.log(random);
+      //cpuの手を決める
+      if (random === 0) {
+        $('#cpu').html(gu);
+      } else if (random === 1) {
+        $('#cpu').html(cho);
+      } else if (random === 2) {
+        $('#cpu').html(pa);
+      }
+
+      // //勝敗を決める
+      if (random === 0) {
+        $('#result').html(icon);
+      } else if (random === 1) {
+        $('#result').html(win);
+      } else if (random === 2) {
+        $('#result').html(kame);
+      }
+
+    });
+
+    //cho button をクリックすると乱数を生成する
+    $('#cho').on('mouseover', function () {
+      const random = Math.floor(Math.random() * 3);
+      console.log(random);
+
+      //cpuの手を決める
+      if (random === 0) {
+        $('#cpu').html(gu);
+      } else if (random === 1) {
+        $('#cpu').html(cho);
+      } else if (random === 2) {
+        $('#cpu').html(pa);
+      }
+
+      // //勝敗を決める
+      if (random === 0) {
+        $('#result').html(kame);
+      } else if (random === 1) {
+        $('#result').html(icon);
+      } else if (random === 2) {
+        $('#result').html(win);
+      }
+
+    });
+    //pa button をクリックすると乱数を生成する
+    $('#pa').on('mouseover', function () {
+      const random = Math.floor(Math.random() * 3);
+      console.log(random);
+
+      if (random === 0) {
+        $('#cpu').html(gu);
+      } else if (random === 1) {
+        $('#cpu').html(cho);
+      } else if (random === 2) {
+        $('#cpu').html(pa);
+      }
+      // //勝敗を決める
+      if (random === 0) {
+        $('#result').html(win);
+      } else if (random === 1) {
+        $('#result').html(kame);
+      } else if (random === 2) {
+        $('#result').html(icon);
+      }
+
+
+    });
+  </script>
+</body>
+
+</html>
